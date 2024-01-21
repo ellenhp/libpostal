@@ -26,7 +26,7 @@ noinst_LTLIBRARIES = libscanner.la
 libscanner_la_SOURCES = klib/drand48.c scanner.c
 libscanner_la_CFLAGS = $(CFLAGS_O0) -D LIBPOSTAL_EXPORTS $(CFLAGS_SCANNER_EXTRA)
 
-noinst_PROGRAMS = libpostal bench address_parser address_parser_train address_parser_test build_address_dictionary build_numex_table build_trans_table address_parser_train address_parser_test language_classifier_train language_classifier language_classifier_test near_dupe_test
+noinst_PROGRAMS = libpostal bench address_parser address_parser_train address_parser_test build_address_dictionary build_numex_table build_trans_table address_parser_train address_parser_test language_classifier_train language_classifier language_classifier_test near_dupe_test dump_trie
 
 libpostal_SOURCES = strndup.c main.c json_encode.c file_utils.c string_utils.c utf8proc/utf8proc.c
 libpostal_LDADD = libpostal.la
@@ -37,6 +37,10 @@ bench_CFLAGS = $(CFLAGS_O3)
 address_parser_SOURCES = strndup.c address_parser_cli.c json_encode.c linenoise/linenoise.c string_utils.c utf8proc/utf8proc.c
 address_parser_LDADD = libpostal.la $(CBLAS_LIBS)
 address_parser_CFLAGS = $(CFLAGS_O3)
+
+dump_trie_SOURCES = trie_dump.c
+dump_trie_LDADD = libpostal.la
+dump_trie_CFLAGS = $(CFLAGS_O3)
 
 near_dupe_test_SOURCES = strndup.c near_dupe_test.c string_utils.c utf8proc/utf8proc.c
 near_dupe_test_LDADD = libpostal.la
